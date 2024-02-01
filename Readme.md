@@ -39,7 +39,7 @@ See [Solace Samples](https://github.com/SolaceSamples/solace-samples-python) for
 1. Create the input JSON file. See config/default.json for reference.
 2. Run script with
 
-    ``` SH
+``` SH
 ▶ python bin/pq-demo-pub.py --profile test --maxmsgsize 10 --numtopics 10 --maxmsgs 100 --numkeys 10 --test-id TEST203 -v
 ```
 
