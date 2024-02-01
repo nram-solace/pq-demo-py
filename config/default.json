@@ -1,0 +1,74 @@
+{
+    "__COMMENTS__" : ["list each broker entry with unique id field"],
+    "brokers" : [
+        {
+            "id" : "test",
+            "__COMMENTS__" : "local docker instance",
+            "hostname" : "localhost",
+            "smf_port" : "55333",
+            "mgmt_port" : "943",
+            "vpn" : "TestVPN",
+            "client_username" : "testuser",
+            "client_password" : "test123",
+            "mgmt_username" : "admin" ,
+            "mgmt_password" : "admin"
+        },
+        {
+            "id" : "local",
+            "__COMMENTS__" : "local docker instance",
+            "hostname" : "localhost",
+            "smf_port" : "55555",
+            "mgmt_port" : "943",
+            "vpn" : "default",
+            "client_username" : "default",
+            "client_password" : "default",
+            "mgmt_username" : "admin" ,
+            "mgmt_password" : "admin"
+        },
+        {
+            "id" : "cloud",
+            "__COMMENTS__" : "Solace instance running solace cloud",
+            "hostname" : "mycloudinstance.messaging.solace.cloud",
+            "smf_port" : "55555",
+            "mgmt_port" : "943",
+            "vpn" : "mycloud-vpn",
+            "client_username" : "solace-cloud-client",
+            "client_password" : "password",
+            "mgmt_username" : "mycloud-admin" ,
+            "mgmt_password" : "password"
+        }
+    ],
+
+    "topic-templates" : {
+        "__COMMENTS__" : [ "Each list in the list of list is a level with possible entries in that level",
+            "$RANDOMSTR   will be replaced with a random string of N chars. See randomstr-length below",
+            "$RANDOMINT   will be replaced with a random number with N digits. See randomint-length below",
+            "$MINCSTR     monotonically increasing string aaaa, aaab ... zzzz",
+            "$MINCINT     monotonically increasing number - 00000, 00001, ... 99999",
+            "$TIMESTAMP   current timestamp", 
+            "$PUBLISHERID publisher thread name" ],
+        "default" : [["test"],
+                    ["pq"],
+                    ["$PUBLISHERID"],
+                    ["$RANDOMNUM"]]
+        },
+
+    "publisher-key-templates" : {    
+        "default" : [["PQ-DEMO"],
+                    ["$TESTID"],
+                    ["$MINCINT"],
+                    ["$RANDOMSTR"]]
+    },
+                
+    "general" : {
+        "__COMMENTS__" : "properties for some inner working. pl review code before changing", 
+        "randomstr-length" : [5,5],
+        "randomint-length" : [3,3],
+        "thread-delay-sec" : 1,
+        "max-publisher-delay-sec"  : 1,
+        "num-publisher-threads" : 3,
+        "num-subscriber-threads" : 1,
+        "num-subscriber-topics": 3,
+        "num-publisher-keys" : 3
+    }
+}
