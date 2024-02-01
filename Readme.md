@@ -47,7 +47,9 @@ See [Solace Samples](https://github.com/SolaceSamples/solace-samples-python) for
 
 TODO
 
-3. To view stats from previous run, run the script with --statsfile option.
+## Stats
+
+To view stats from previous run, run the script with --statsfile option.
 
 ## Contact
 [Ramesh Natarajan](ramesh.natarajan@solace.com)
